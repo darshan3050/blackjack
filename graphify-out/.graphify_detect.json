@@ -1,0 +1,43 @@
+{
+  "files": {
+    "code": [
+      "D:\\go\\blackjack\\eslint.config.mjs",
+      "D:\\go\\blackjack\\next-env.d.ts",
+      "D:\\go\\blackjack\\next.config.ts",
+      "D:\\go\\blackjack\\postcss.config.mjs",
+      "D:\\go\\blackjack\\server.ts",
+      "D:\\go\\blackjack\\src\\app\\layout.tsx",
+      "D:\\go\\blackjack\\src\\app\\page.tsx",
+      "D:\\go\\blackjack\\src\\components\\BettingControls.tsx",
+      "D:\\go\\blackjack\\src\\components\\Card.tsx",
+      "D:\\go\\blackjack\\src\\components\\GameBoard.tsx",
+      "D:\\go\\blackjack\\src\\components\\GameControls.tsx",
+      "D:\\go\\blackjack\\src\\components\\Hand.tsx",
+      "D:\\go\\blackjack\\src\\components\\MultiplayerRoom.tsx",
+      "D:\\go\\blackjack\\src\\lib\\cardUtils.ts",
+      "D:\\go\\blackjack\\src\\lib\\gameLogic.ts",
+      "D:\\go\\blackjack\\src\\lib\\gameTypes.ts",
+      "D:\\go\\blackjack\\src\\lib\\multiplayer.ts"
+    ],
+    "document": [
+      "D:\\go\\blackjack\\AGENTS.md",
+      "D:\\go\\blackjack\\CLAUDE.md",
+      "D:\\go\\blackjack\\README.md"
+    ],
+    "paper": [],
+    "image": [
+      "D:\\go\\blackjack\\public\\file.svg",
+      "D:\\go\\blackjack\\public\\globe.svg",
+      "D:\\go\\blackjack\\public\\next.svg",
+      "D:\\go\\blackjack\\public\\vercel.svg",
+      "D:\\go\\blackjack\\public\\window.svg"
+    ],
+    "video": []
+  },
+  "total_files": 25,
+  "total_words": 5673,
+  "needs_graph": false,
+  "warning": "Corpus is ~5,673 words - fits in a single context window. You may not need a graph.",
+  "skipped_sensitive": [],
+  "graphifyignore_patterns": 0
+}

@@ -1,0 +1,1522 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "eslint.config.mjs",
+      "file_type": "code",
+      "source_file": "eslint.config.mjs",
+      "source_location": "L1",
+      "id": "eslint_config_mjs"
+    },
+    {
+      "label": "next-env.d.ts",
+      "file_type": "code",
+      "source_file": "next-env.d.ts",
+      "source_location": "L1",
+      "id": "next_env_d_ts"
+    },
+    {
+      "label": "next.config.ts",
+      "file_type": "code",
+      "source_file": "next.config.ts",
+      "source_location": "L1",
+      "id": "next_config_ts"
+    },
+    {
+      "label": "postcss.config.mjs",
+      "file_type": "code",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L1",
+      "id": "postcss_config_mjs"
+    },
+    {
+      "label": "server.ts",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L1",
+      "id": "server_ts"
+    },
+    {
+      "label": "createRoom()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L42",
+      "id": "blackjack_server_createroom"
+    },
+    {
+      "label": "getRoom()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L62",
+      "id": "blackjack_server_getroom"
+    },
+    {
+      "label": "cloneRoom()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L73",
+      "id": "blackjack_server_cloneroom"
+    },
+    {
+      "label": "computeHandValue()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L93",
+      "id": "blackjack_server_computehandvalue"
+    },
+    {
+      "label": "ensureDeck()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L98",
+      "id": "blackjack_server_ensuredeck"
+    },
+    {
+      "label": "dealRound()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L104",
+      "id": "blackjack_server_dealround"
+    },
+    {
+      "label": "startMultiplayerRound()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L122",
+      "id": "blackjack_server_startmultiplayerround"
+    },
+    {
+      "label": "applyDealerResult()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L148",
+      "id": "blackjack_server_applydealerresult"
+    },
+    {
+      "label": "dealerTurn()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L186",
+      "id": "blackjack_server_dealerturn"
+    },
+    {
+      "label": "serializeRoom()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L208",
+      "id": "blackjack_server_serializeroom"
+    },
+    {
+      "label": "emitRoom()",
+      "file_type": "code",
+      "source_file": "server.ts",
+      "source_location": "L227",
+      "id": "blackjack_server_emitroom"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L1",
+      "id": "src_app_layout_tsx"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L20",
+      "id": "app_layout_rootlayout"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L1",
+      "id": "src_app_page_tsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L6",
+      "id": "app_page_home"
+    },
+    {
+      "label": "BettingControls.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\BettingControls.tsx",
+      "source_location": "L1",
+      "id": "src_components_bettingcontrols_tsx"
+    },
+    {
+      "label": "BettingControls()",
+      "file_type": "code",
+      "source_file": "src\\components\\BettingControls.tsx",
+      "source_location": "L11",
+      "id": "components_bettingcontrols_bettingcontrols"
+    },
+    {
+      "label": "Card.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Card.tsx",
+      "source_location": "L1",
+      "id": "src_components_card_tsx"
+    },
+    {
+      "label": "GameBoard.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\GameBoard.tsx",
+      "source_location": "L1",
+      "id": "src_components_gameboard_tsx"
+    },
+    {
+      "label": "handleBet()",
+      "file_type": "code",
+      "source_file": "src\\components\\GameBoard.tsx",
+      "source_location": "L167",
+      "id": "components_gameboard_handlebet"
+    },
+    {
+      "label": "GameControls.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\GameControls.tsx",
+      "source_location": "L1",
+      "id": "src_components_gamecontrols_tsx"
+    },
+    {
+      "label": "GameControls()",
+      "file_type": "code",
+      "source_file": "src\\components\\GameControls.tsx",
+      "source_location": "L16",
+      "id": "components_gamecontrols_gamecontrols"
+    },
+    {
+      "label": "Hand.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\Hand.tsx",
+      "source_location": "L1",
+      "id": "src_components_hand_tsx"
+    },
+    {
+      "label": "MultiplayerRoom.tsx",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L1",
+      "id": "src_components_multiplayerroom_tsx"
+    },
+    {
+      "label": "onConnect()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L47",
+      "id": "components_multiplayerroom_onconnect"
+    },
+    {
+      "label": "onDisconnect()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L48",
+      "id": "components_multiplayerroom_ondisconnect"
+    },
+    {
+      "label": "onJoined()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L49",
+      "id": "components_multiplayerroom_onjoined"
+    },
+    {
+      "label": "onUpdate()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L54",
+      "id": "components_multiplayerroom_onupdate"
+    },
+    {
+      "label": "onError()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L58",
+      "id": "components_multiplayerroom_onerror"
+    },
+    {
+      "label": "joinRoom()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L86",
+      "id": "components_multiplayerroom_joinroom"
+    },
+    {
+      "label": "emitRoomAction()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L96",
+      "id": "components_multiplayerroom_emitroomaction"
+    },
+    {
+      "label": "handleBet()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L104",
+      "id": "components_multiplayerroom_handlebet"
+    },
+    {
+      "label": "handleHit()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L109",
+      "id": "components_multiplayerroom_handlehit"
+    },
+    {
+      "label": "handleStand()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L110",
+      "id": "components_multiplayerroom_handlestand"
+    },
+    {
+      "label": "handleDouble()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L111",
+      "id": "components_multiplayerroom_handledouble"
+    },
+    {
+      "label": "handlePlayAgain()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L112",
+      "id": "components_multiplayerroom_handleplayagain"
+    },
+    {
+      "label": "handleChangeBet()",
+      "file_type": "code",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L113",
+      "id": "components_multiplayerroom_handlechangebet"
+    },
+    {
+      "label": "cardUtils.ts",
+      "file_type": "code",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L1",
+      "id": "src_lib_cardutils_ts"
+    },
+    {
+      "label": "createDeck()",
+      "file_type": "code",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L6",
+      "id": "lib_cardutils_createdeck"
+    },
+    {
+      "label": "calculateHandValue()",
+      "file_type": "code",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L18",
+      "id": "lib_cardutils_calculatehandvalue"
+    },
+    {
+      "label": "createHand()",
+      "file_type": "code",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L41",
+      "id": "lib_cardutils_createhand"
+    },
+    {
+      "label": "isBlackjack()",
+      "file_type": "code",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L46",
+      "id": "lib_cardutils_isblackjack"
+    },
+    {
+      "label": "hasCard()",
+      "file_type": "code",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L50",
+      "id": "lib_cardutils_hascard"
+    },
+    {
+      "label": "gameLogic.ts",
+      "file_type": "code",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L1",
+      "id": "src_lib_gamelogic_ts"
+    },
+    {
+      "label": "hitPlayer()",
+      "file_type": "code",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L4",
+      "id": "lib_gamelogic_hitplayer"
+    },
+    {
+      "label": "stand()",
+      "file_type": "code",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L21",
+      "id": "lib_gamelogic_stand"
+    },
+    {
+      "label": "doubleDown()",
+      "file_type": "code",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L29",
+      "id": "lib_gamelogic_doubledown"
+    },
+    {
+      "label": "dealerPlay()",
+      "file_type": "code",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L54",
+      "id": "lib_gamelogic_dealerplay"
+    },
+    {
+      "label": "determineWinner()",
+      "file_type": "code",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L117",
+      "id": "lib_gamelogic_determinewinner"
+    },
+    {
+      "label": "gameTypes.ts",
+      "file_type": "code",
+      "source_file": "src\\lib\\gameTypes.ts",
+      "source_location": "L1",
+      "id": "src_lib_gametypes_ts"
+    },
+    {
+      "label": "multiplayer.ts",
+      "file_type": "code",
+      "source_file": "src\\lib\\multiplayer.ts",
+      "source_location": "L1",
+      "id": "src_lib_multiplayer_ts"
+    },
+    {
+      "label": "Game Type Definitions",
+      "file_type": "code",
+      "id": "gameTypes"
+    },
+    {
+      "label": "Card Interface",
+      "file_type": "code",
+      "id": "typeCard"
+    },
+    {
+      "label": "Hand Interface",
+      "file_type": "code",
+      "id": "typeHand"
+    },
+    {
+      "label": "GameData Interface",
+      "file_type": "code",
+      "id": "typeGameData"
+    },
+    {
+      "label": "GameState Type",
+      "file_type": "code",
+      "id": "typeGameState"
+    },
+    {
+      "label": "MultiplayerRoomState Type",
+      "file_type": "code",
+      "id": "typeMultiplayerRoomState"
+    },
+    {
+      "label": "Card Utilities",
+      "file_type": "code",
+      "id": "cardUtils"
+    },
+    {
+      "label": "createDeck()",
+      "file_type": "code",
+      "id": "createDeck"
+    },
+    {
+      "label": "calculateHandValue()",
+      "file_type": "code",
+      "id": "calculateHandValue"
+    },
+    {
+      "label": "createHand()",
+      "file_type": "code",
+      "id": "createHand"
+    },
+    {
+      "label": "isBlackjack()",
+      "file_type": "code",
+      "id": "isBlackjack"
+    },
+    {
+      "label": "Game Logic",
+      "file_type": "code",
+      "id": "gameLogic"
+    },
+    {
+      "label": "hitPlayer()",
+      "file_type": "code",
+      "id": "hitPlayer"
+    },
+    {
+      "label": "stand()",
+      "file_type": "code",
+      "id": "stand"
+    },
+    {
+      "label": "doubleDown()",
+      "file_type": "code",
+      "id": "doubleDown"
+    },
+    {
+      "label": "dealerPlay()",
+      "file_type": "code",
+      "id": "dealerPlay"
+    },
+    {
+      "label": "determineWinner()",
+      "file_type": "code",
+      "id": "determineWinner"
+    },
+    {
+      "label": "Multiplayer Module",
+      "file_type": "code",
+      "id": "multiplayer"
+    },
+    {
+      "label": "Card Component",
+      "file_type": "code",
+      "id": "CardComponent"
+    },
+    {
+      "label": "Hand Display Component",
+      "file_type": "code",
+      "id": "HandDisplay"
+    },
+    {
+      "label": "Game Board Component",
+      "file_type": "code",
+      "id": "GameBoard"
+    },
+    {
+      "label": "Game Controls Component",
+      "file_type": "code",
+      "id": "GameControls"
+    },
+    {
+      "label": "Betting Controls Component",
+      "file_type": "code",
+      "id": "BettingControls"
+    },
+    {
+      "label": "Multiplayer Room Component",
+      "file_type": "code",
+      "id": "MultiplayerRoom"
+    },
+    {
+      "label": "Home Page",
+      "file_type": "code",
+      "id": "HomePage"
+    },
+    {
+      "label": "Root Layout",
+      "file_type": "code",
+      "id": "RootLayout"
+    },
+    {
+      "label": "Backend Server",
+      "file_type": "code",
+      "id": "server"
+    },
+    {
+      "label": "Project Dependencies",
+      "file_type": "document",
+      "id": "package"
+    },
+    {
+      "label": "Project Documentation",
+      "file_type": "document",
+      "id": "documentation"
+    }
+  ],
+  "edges": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_createroom",
+      "source": "server_ts",
+      "target": "blackjack_server_createroom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L62",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_getroom",
+      "source": "server_ts",
+      "target": "blackjack_server_getroom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_cloneroom",
+      "source": "server_ts",
+      "target": "blackjack_server_cloneroom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_computehandvalue",
+      "source": "server_ts",
+      "target": "blackjack_server_computehandvalue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_ensuredeck",
+      "source": "server_ts",
+      "target": "blackjack_server_ensuredeck"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_dealround",
+      "source": "server_ts",
+      "target": "blackjack_server_dealround"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_startmultiplayerround",
+      "source": "server_ts",
+      "target": "blackjack_server_startmultiplayerround"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_applydealerresult",
+      "source": "server_ts",
+      "target": "blackjack_server_applydealerresult"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L186",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_dealerturn",
+      "source": "server_ts",
+      "target": "blackjack_server_dealerturn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L208",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_serializeroom",
+      "source": "server_ts",
+      "target": "blackjack_server_serializeroom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L227",
+      "weight": 1.0,
+      "_src": "server_ts",
+      "_tgt": "blackjack_server_emitroom",
+      "source": "server_ts",
+      "target": "blackjack_server_emitroom"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "blackjack_server_getroom",
+      "_tgt": "blackjack_server_createroom",
+      "source": "blackjack_server_createroom",
+      "target": "blackjack_server_getroom"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "server.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "blackjack_server_createroom",
+      "_tgt": "lib_cardutils_createdeck",
+      "source": "blackjack_server_createroom",
+      "target": "lib_cardutils_createdeck"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "server.ts",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_src": "blackjack_server_computehandvalue",
+      "_tgt": "lib_cardutils_createhand",
+      "source": "blackjack_server_computehandvalue",
+      "target": "lib_cardutils_createhand"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_src": "blackjack_server_dealround",
+      "_tgt": "blackjack_server_ensuredeck",
+      "source": "blackjack_server_ensuredeck",
+      "target": "blackjack_server_dealround"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L128",
+      "weight": 1.0,
+      "_src": "blackjack_server_startmultiplayerround",
+      "_tgt": "blackjack_server_ensuredeck",
+      "source": "blackjack_server_ensuredeck",
+      "target": "blackjack_server_startmultiplayerround"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L187",
+      "weight": 1.0,
+      "_src": "blackjack_server_dealerturn",
+      "_tgt": "blackjack_server_ensuredeck",
+      "source": "blackjack_server_ensuredeck",
+      "target": "blackjack_server_dealerturn"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "server.ts",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_src": "blackjack_server_ensuredeck",
+      "_tgt": "lib_cardutils_createdeck",
+      "source": "blackjack_server_ensuredeck",
+      "target": "lib_cardutils_createdeck"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "server.ts",
+      "source_location": "L110",
+      "weight": 1.0,
+      "_src": "blackjack_server_dealround",
+      "_tgt": "lib_cardutils_createhand",
+      "source": "blackjack_server_dealround",
+      "target": "lib_cardutils_createhand"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "server.ts",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_src": "blackjack_server_startmultiplayerround",
+      "_tgt": "lib_cardutils_createhand",
+      "source": "blackjack_server_startmultiplayerround",
+      "target": "lib_cardutils_createhand"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L197",
+      "weight": 1.0,
+      "_src": "blackjack_server_dealerturn",
+      "_tgt": "blackjack_server_applydealerresult",
+      "source": "blackjack_server_applydealerresult",
+      "target": "blackjack_server_dealerturn"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "server.ts",
+      "source_location": "L192",
+      "weight": 1.0,
+      "_src": "blackjack_server_dealerturn",
+      "_tgt": "lib_cardutils_createhand",
+      "source": "blackjack_server_dealerturn",
+      "target": "lib_cardutils_createhand"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server.ts",
+      "source_location": "L233",
+      "weight": 1.0,
+      "_src": "blackjack_server_emitroom",
+      "_tgt": "blackjack_server_serializeroom",
+      "source": "blackjack_server_serializeroom",
+      "target": "blackjack_server_emitroom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\layout.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "src_app_layout_tsx",
+      "_tgt": "app_layout_rootlayout",
+      "source": "src_app_layout_tsx",
+      "target": "app_layout_rootlayout"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\app\\page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_app_page_tsx",
+      "_tgt": "app_page_home",
+      "source": "src_app_page_tsx",
+      "target": "app_page_home"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\BettingControls.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "src_components_bettingcontrols_tsx",
+      "_tgt": "components_bettingcontrols_bettingcontrols",
+      "source": "src_components_bettingcontrols_tsx",
+      "target": "components_bettingcontrols_bettingcontrols"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\GameBoard.tsx",
+      "source_location": "L167",
+      "weight": 1.0,
+      "_src": "src_components_gameboard_tsx",
+      "_tgt": "components_gameboard_handlebet",
+      "source": "src_components_gameboard_tsx",
+      "target": "components_gameboard_handlebet"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\GameControls.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "src_components_gamecontrols_tsx",
+      "_tgt": "components_gamecontrols_gamecontrols",
+      "source": "src_components_gamecontrols_tsx",
+      "target": "components_gamecontrols_gamecontrols"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_onconnect",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_onconnect"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_ondisconnect",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_ondisconnect"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_onjoined",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_onjoined"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_onupdate",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_onupdate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_onerror",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_onerror"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_joinroom",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_joinroom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_emitroomaction",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_emitroomaction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_handlebet",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_handlebet"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_handlehit",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_handlehit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L110",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_handlestand",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_handlestand"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_handledouble",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_handledouble"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_handleplayagain",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_handleplayagain"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_src": "src_components_multiplayerroom_tsx",
+      "_tgt": "components_multiplayerroom_handlechangebet",
+      "source": "src_components_multiplayerroom_tsx",
+      "target": "components_multiplayerroom_handlechangebet"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_src": "components_multiplayerroom_handlebet",
+      "_tgt": "components_multiplayerroom_emitroomaction",
+      "source": "components_multiplayerroom_emitroomaction",
+      "target": "components_multiplayerroom_handlebet"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_src": "components_multiplayerroom_handlehit",
+      "_tgt": "components_multiplayerroom_emitroomaction",
+      "source": "components_multiplayerroom_emitroomaction",
+      "target": "components_multiplayerroom_handlehit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L110",
+      "weight": 1.0,
+      "_src": "components_multiplayerroom_handlestand",
+      "_tgt": "components_multiplayerroom_emitroomaction",
+      "source": "components_multiplayerroom_emitroomaction",
+      "target": "components_multiplayerroom_handlestand"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_src": "components_multiplayerroom_handledouble",
+      "_tgt": "components_multiplayerroom_emitroomaction",
+      "source": "components_multiplayerroom_emitroomaction",
+      "target": "components_multiplayerroom_handledouble"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\components\\MultiplayerRoom.tsx",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_src": "components_multiplayerroom_handleplayagain",
+      "_tgt": "components_multiplayerroom_emitroomaction",
+      "source": "components_multiplayerroom_emitroomaction",
+      "target": "components_multiplayerroom_handleplayagain"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_lib_cardutils_ts",
+      "_tgt": "lib_cardutils_createdeck",
+      "source": "src_lib_cardutils_ts",
+      "target": "lib_cardutils_createdeck"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "src_lib_cardutils_ts",
+      "_tgt": "lib_cardutils_calculatehandvalue",
+      "source": "src_lib_cardutils_ts",
+      "target": "lib_cardutils_calculatehandvalue"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "src_lib_cardutils_ts",
+      "_tgt": "lib_cardutils_createhand",
+      "source": "src_lib_cardutils_ts",
+      "target": "lib_cardutils_createhand"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "src_lib_cardutils_ts",
+      "_tgt": "lib_cardutils_isblackjack",
+      "source": "src_lib_cardutils_ts",
+      "target": "lib_cardutils_isblackjack"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_src": "src_lib_cardutils_ts",
+      "_tgt": "lib_cardutils_hascard",
+      "source": "src_lib_cardutils_ts",
+      "target": "lib_cardutils_hascard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\cardUtils.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "lib_cardutils_createhand",
+      "_tgt": "lib_cardutils_calculatehandvalue",
+      "source": "lib_cardutils_calculatehandvalue",
+      "target": "lib_cardutils_createhand"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "lib_gamelogic_hitplayer",
+      "_tgt": "lib_cardutils_createhand",
+      "source": "lib_cardutils_createhand",
+      "target": "lib_gamelogic_hitplayer"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "lib_gamelogic_doubledown",
+      "_tgt": "lib_cardutils_createhand",
+      "source": "lib_cardutils_createhand",
+      "target": "lib_gamelogic_doubledown"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_src": "lib_gamelogic_dealerplay",
+      "_tgt": "lib_cardutils_createhand",
+      "source": "lib_cardutils_createhand",
+      "target": "lib_gamelogic_dealerplay"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "src_lib_gamelogic_ts",
+      "_tgt": "lib_gamelogic_hitplayer",
+      "source": "src_lib_gamelogic_ts",
+      "target": "lib_gamelogic_hitplayer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "src_lib_gamelogic_ts",
+      "_tgt": "lib_gamelogic_stand",
+      "source": "src_lib_gamelogic_ts",
+      "target": "lib_gamelogic_stand"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "src_lib_gamelogic_ts",
+      "_tgt": "lib_gamelogic_doubledown",
+      "source": "src_lib_gamelogic_ts",
+      "target": "lib_gamelogic_doubledown"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "src_lib_gamelogic_ts",
+      "_tgt": "lib_gamelogic_dealerplay",
+      "source": "src_lib_gamelogic_ts",
+      "target": "lib_gamelogic_dealerplay"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L117",
+      "weight": 1.0,
+      "_src": "src_lib_gamelogic_ts",
+      "_tgt": "lib_gamelogic_determinewinner",
+      "source": "src_lib_gamelogic_ts",
+      "target": "lib_gamelogic_determinewinner"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src\\lib\\gameLogic.ts",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "lib_gamelogic_dealerplay",
+      "_tgt": "lib_gamelogic_determinewinner",
+      "source": "lib_gamelogic_dealerplay",
+      "target": "lib_gamelogic_determinewinner"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "_src": "cardUtils",
+      "_tgt": "typeCard",
+      "source": "typeCard",
+      "target": "cardUtils"
+    },
+    {
+      "relation": "returns",
+      "confidence": "EXTRACTED",
+      "_src": "createDeck",
+      "_tgt": "typeCard",
+      "source": "typeCard",
+      "target": "createDeck"
+    },
+    {
+      "relation": "accepts",
+      "confidence": "EXTRACTED",
+      "_src": "calculateHandValue",
+      "_tgt": "typeCard",
+      "source": "typeCard",
+      "target": "calculateHandValue"
+    },
+    {
+      "relation": "accepts",
+      "confidence": "EXTRACTED",
+      "_src": "createHand",
+      "_tgt": "typeCard",
+      "source": "typeCard",
+      "target": "createHand"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "_src": "gameLogic",
+      "_tgt": "typeCard",
+      "source": "typeCard",
+      "target": "gameLogic"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "_src": "cardUtils",
+      "_tgt": "typeHand",
+      "source": "typeHand",
+      "target": "cardUtils"
+    },
+    {
+      "relation": "returns",
+      "confidence": "EXTRACTED",
+      "_src": "createHand",
+      "_tgt": "typeHand",
+      "source": "typeHand",
+      "target": "createHand"
+    },
+    {
+      "relation": "accepts",
+      "confidence": "EXTRACTED",
+      "_src": "isBlackjack",
+      "_tgt": "typeHand",
+      "source": "typeHand",
+      "target": "isBlackjack"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "_src": "gameLogic",
+      "_tgt": "typeGameData",
+      "source": "typeGameData",
+      "target": "gameLogic"
+    },
+    {
+      "relation": "accepts",
+      "confidence": "EXTRACTED",
+      "_src": "hitPlayer",
+      "_tgt": "typeGameData",
+      "source": "typeGameData",
+      "target": "hitPlayer"
+    },
+    {
+      "relation": "accepts",
+      "confidence": "EXTRACTED",
+      "_src": "stand",
+      "_tgt": "typeGameData",
+      "source": "typeGameData",
+      "target": "stand"
+    },
+    {
+      "relation": "accepts",
+      "confidence": "EXTRACTED",
+      "_src": "doubleDown",
+      "_tgt": "typeGameData",
+      "source": "typeGameData",
+      "target": "doubleDown"
+    },
+    {
+      "relation": "accepts",
+      "confidence": "EXTRACTED",
+      "_src": "dealerPlay",
+      "_tgt": "typeGameData",
+      "source": "typeGameData",
+      "target": "dealerPlay"
+    },
+    {
+      "relation": "manages_state",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "typeGameData",
+      "source": "typeGameData",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "_src": "cardUtils",
+      "_tgt": "typeGameState",
+      "source": "typeGameState",
+      "target": "cardUtils"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "_src": "gameLogic",
+      "_tgt": "typeGameState",
+      "source": "typeGameState",
+      "target": "gameLogic"
+    },
+    {
+      "relation": "returns",
+      "confidence": "INFERRED",
+      "_src": "determineWinner",
+      "_tgt": "typeGameState",
+      "source": "typeGameState",
+      "target": "determineWinner"
+    },
+    {
+      "relation": "uses",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "typeGameState",
+      "source": "typeGameState",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "createDeck",
+      "source": "createDeck",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "createHand",
+      "_tgt": "calculateHandValue",
+      "source": "calculateHandValue",
+      "target": "createHand"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "gameLogic",
+      "_tgt": "calculateHandValue",
+      "source": "calculateHandValue",
+      "target": "gameLogic"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "gameLogic",
+      "_tgt": "createHand",
+      "source": "createHand",
+      "target": "gameLogic"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "hitPlayer",
+      "_tgt": "createHand",
+      "source": "createHand",
+      "target": "hitPlayer"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "doubleDown",
+      "_tgt": "createHand",
+      "source": "createHand",
+      "target": "doubleDown"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "dealerPlay",
+      "_tgt": "createHand",
+      "source": "createHand",
+      "target": "dealerPlay"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "createHand",
+      "source": "createHand",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "gameLogic",
+      "_tgt": "isBlackjack",
+      "source": "isBlackjack",
+      "target": "gameLogic"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "hitPlayer",
+      "source": "hitPlayer",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "stand",
+      "source": "stand",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "doubleDown",
+      "source": "doubleDown",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "dealerPlay",
+      "_tgt": "determineWinner",
+      "source": "dealerPlay",
+      "target": "determineWinner"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "dealerPlay",
+      "source": "dealerPlay",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "renders",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "HandDisplay",
+      "source": "HandDisplay",
+      "target": "GameBoard"
+    },
+    {
+      "relation": "renders",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "GameControls",
+      "source": "GameBoard",
+      "target": "GameControls"
+    },
+    {
+      "relation": "renders",
+      "confidence": "EXTRACTED",
+      "_src": "GameBoard",
+      "_tgt": "BettingControls",
+      "source": "GameBoard",
+      "target": "BettingControls"
+    },
+    {
+      "relation": "renders",
+      "confidence": "EXTRACTED",
+      "_src": "HomePage",
+      "_tgt": "GameBoard",
+      "source": "GameBoard",
+      "target": "HomePage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "_src": "RootLayout",
+      "_tgt": "HomePage",
+      "source": "HomePage",
+      "target": "RootLayout"
+    }
+  ]
+}

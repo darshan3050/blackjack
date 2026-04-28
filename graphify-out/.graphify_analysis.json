@@ -1,0 +1,249 @@
+{
+  "communities": {
+    "0": [
+      "BettingControls",
+      "GameBoard",
+      "GameControls",
+      "HandDisplay",
+      "HomePage",
+      "RootLayout",
+      "calculateHandValue",
+      "cardUtils",
+      "createDeck",
+      "createHand",
+      "dealerPlay",
+      "determineWinner",
+      "doubleDown",
+      "gameLogic",
+      "hitPlayer",
+      "isBlackjack",
+      "stand",
+      "typeCard",
+      "typeGameData",
+      "typeGameState",
+      "typeHand"
+    ],
+    "1": [
+      "components_multiplayerroom_emitroomaction",
+      "components_multiplayerroom_handlebet",
+      "components_multiplayerroom_handlechangebet",
+      "components_multiplayerroom_handledouble",
+      "components_multiplayerroom_handlehit",
+      "components_multiplayerroom_handleplayagain",
+      "components_multiplayerroom_handlestand",
+      "components_multiplayerroom_joinroom",
+      "components_multiplayerroom_onconnect",
+      "components_multiplayerroom_ondisconnect",
+      "components_multiplayerroom_onerror",
+      "components_multiplayerroom_onjoined",
+      "components_multiplayerroom_onupdate",
+      "src_components_multiplayerroom_tsx"
+    ],
+    "2": [
+      "blackjack_server_applydealerresult",
+      "blackjack_server_cloneroom",
+      "blackjack_server_createroom",
+      "blackjack_server_dealerturn",
+      "blackjack_server_dealround",
+      "blackjack_server_emitroom",
+      "blackjack_server_ensuredeck",
+      "blackjack_server_getroom",
+      "blackjack_server_serializeroom",
+      "blackjack_server_startmultiplayerround",
+      "lib_cardutils_createdeck",
+      "server_ts"
+    ],
+    "3": [
+      "blackjack_server_computehandvalue",
+      "lib_cardutils_calculatehandvalue",
+      "lib_cardutils_createhand",
+      "lib_cardutils_hascard",
+      "lib_cardutils_isblackjack",
+      "lib_gamelogic_dealerplay",
+      "lib_gamelogic_determinewinner",
+      "lib_gamelogic_doubledown",
+      "lib_gamelogic_hitplayer",
+      "lib_gamelogic_stand",
+      "src_lib_cardutils_ts",
+      "src_lib_gamelogic_ts"
+    ],
+    "4": [
+      "app_layout_rootlayout",
+      "src_app_layout_tsx"
+    ],
+    "5": [
+      "app_page_home",
+      "src_app_page_tsx"
+    ],
+    "6": [
+      "components_bettingcontrols_bettingcontrols",
+      "src_components_bettingcontrols_tsx"
+    ],
+    "7": [
+      "components_gameboard_handlebet",
+      "src_components_gameboard_tsx"
+    ],
+    "8": [
+      "components_gamecontrols_gamecontrols",
+      "src_components_gamecontrols_tsx"
+    ],
+    "9": [
+      "eslint_config_mjs"
+    ],
+    "10": [
+      "next_env_d_ts"
+    ],
+    "11": [
+      "next_config_ts"
+    ],
+    "12": [
+      "postcss_config_mjs"
+    ],
+    "13": [
+      "src_components_card_tsx"
+    ],
+    "14": [
+      "src_components_hand_tsx"
+    ],
+    "15": [
+      "src_lib_gametypes_ts"
+    ],
+    "16": [
+      "src_lib_multiplayer_ts"
+    ],
+    "17": [
+      "gameTypes"
+    ],
+    "18": [
+      "typeMultiplayerRoomState"
+    ],
+    "19": [
+      "multiplayer"
+    ],
+    "20": [
+      "CardComponent"
+    ],
+    "21": [
+      "MultiplayerRoom"
+    ],
+    "22": [
+      "server"
+    ],
+    "23": [
+      "package"
+    ],
+    "24": [
+      "documentation"
+    ]
+  },
+  "cohesion": {},
+  "god_nodes": [
+    {
+      "id": "lib_cardutils_createhand",
+      "label": "createHand()",
+      "degree": 9
+    },
+    {
+      "id": "components_multiplayerroom_emitroomaction",
+      "label": "emitRoomAction()",
+      "degree": 6
+    },
+    {
+      "id": "blackjack_server_ensuredeck",
+      "label": "ensureDeck()",
+      "degree": 5
+    },
+    {
+      "id": "blackjack_server_dealerturn",
+      "label": "dealerTurn()",
+      "degree": 4
+    },
+    {
+      "id": "blackjack_server_createroom",
+      "label": "createRoom()",
+      "degree": 3
+    },
+    {
+      "id": "blackjack_server_dealround",
+      "label": "dealRound()",
+      "degree": 3
+    },
+    {
+      "id": "blackjack_server_startmultiplayerround",
+      "label": "startMultiplayerRound()",
+      "degree": 3
+    },
+    {
+      "id": "lib_cardutils_createdeck",
+      "label": "createDeck()",
+      "degree": 3
+    },
+    {
+      "id": "lib_gamelogic_dealerplay",
+      "label": "dealerPlay()",
+      "degree": 3
+    },
+    {
+      "id": "blackjack_server_getroom",
+      "label": "getRoom()",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "computeHandValue()",
+      "target": "createHand()",
+      "source_files": [
+        "server.ts",
+        "src\\lib\\cardUtils.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `computeHandValue()` unexpectedly reaches hub `createHand()`"
+    },
+    {
+      "source": "dealRound()",
+      "target": "createHand()",
+      "source_files": [
+        "server.ts",
+        "src\\lib\\cardUtils.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "startMultiplayerRound()",
+      "target": "createHand()",
+      "source_files": [
+        "server.ts",
+        "src\\lib\\cardUtils.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "dealerTurn()",
+      "target": "createHand()",
+      "source_files": [
+        "server.ts",
+        "src\\lib\\cardUtils.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "hitPlayer()",
+      "target": "createHand()",
+      "source_files": [
+        "src\\lib\\gameLogic.ts",
+        "src\\lib\\cardUtils.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `hitPlayer()` unexpectedly reaches hub `createHand()`"
+    }
+  ]
+}
