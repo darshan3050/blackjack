@@ -6,7 +6,7 @@ interface GameControlsProps {
   onDoubleDown: () => void;
   onNewGame: () => void;
   onPlayAgain: () => void;
-  canHit: boolean;
+  canHit: boolean; 
   canStand: boolean;
   canDoubleDown: boolean;
   gameFinished: boolean;
