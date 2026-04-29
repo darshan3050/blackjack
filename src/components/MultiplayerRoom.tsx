@@ -23,11 +23,12 @@ export function MultiplayerRoom() {
       return null;
     }
 
-    return io({
+    return io(process.env.NEXT_PUBLIC_SOCKET_URL, {
       autoConnect: false,
       path: '/socket.io',
+      transports: ['websocket', 'polling'],
     });
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (!socket) {
