@@ -11,46 +11,40 @@ import { BettingControls } from './BettingControls';
 const INITIAL_BALANCE = 500;
 const BALANCE_STORAGE_KEY = 'blackjack-balance';
 
-export function GameBoard() {
-  const [hydrated, setHydrated] = useState(false);
-  const [deck, setDeck] = useState(() => createDeck());
-  const [gameState, setGameState] = useState<GameState>('betting');
-  const [game, setGame] = useState<GameData>({
+function getInitialGame(): GameData {
+  const storedBalance =
+    typeof window === 'undefined' ? null : window.localStorage.getItem(BALANCE_STORAGE_KEY);
+  const parsedBalance = storedBalance ? Number(storedBalance) : NaN;
+  const balance = Number.isFinite(parsedBalance) && parsedBalance >= 0 ? parsedBalance : INITIAL_BALANCE;
+
+  return {
     playerHand: { cards: [], value: 0, isBust: false },
     dealerHand: { cards: [], value: 0, isBust: false },
     dealerUpCard: null,
     gameState: 'betting',
-    balance: INITIAL_BALANCE,
+    balance,
     currentBet: 0,
     message: 'Place your bet to begin',
     playerWon: null,
     isDraw: false,
-  });
+  };
+}
+
+export function GameBoard() {
+  const [deck, setDeck] = useState(() => createDeck());
+  const [gameState, setGameState] = useState<GameState>('betting');
+  const [game, setGame] = useState<GameData>(getInitialGame);
 
   useEffect(() => {
-    const storedBalance = window.localStorage.getItem(BALANCE_STORAGE_KEY);
-    const parsedBalance = storedBalance ? Number(storedBalance) : NaN;
-
-    if (Number.isFinite(parsedBalance) && parsedBalance >= 0) {
-      setGame((currentGame) => ({
-        ...currentGame,
-        balance: parsedBalance,
-      }));
-    }
-
-    setHydrated(true);
-  }, []);
-
-  useEffect(() => {
-    if (!hydrated) {
+    if (typeof window === 'undefined') {
       return;
     }
 
     window.localStorage.setItem(BALANCE_STORAGE_KEY, String(game.balance));
-  }, [game.balance, hydrated]);
+  }, [game.balance]);
 
   const dealInitialCards = useCallback((betAmount: number) => {
-    let newDeck = deck.length < 10 ? createDeck() : deck;
+    const newDeck = deck.length < 10 ? createDeck() : deck;
     const playerCards = [newDeck[0], newDeck[1]];
     const dealerCards = [newDeck[2], newDeck[3]];
 
@@ -74,6 +68,34 @@ export function GameBoard() {
     setGame(newGame);
   }, [deck, game.balance]);
 
+  const dealerPlayTurn = useCallback(
+    (currentGame: GameData) => {
+      let tempGame = currentGame;
+
+      const playDealer = (g: GameData, d: typeof deck) => {
+        let newDeck = d.length === 0 ? createDeck() : d;
+
+        if (tempGame.dealerHand.value < 17) {
+          const newCard = newDeck[0];
+          tempGame = dealerPlay(g, newCard);
+          newDeck = newDeck.slice(1);
+
+          setTimeout(() => {
+            playDealer(tempGame, newDeck);
+          }, 800);
+        } else {
+          tempGame = dealerPlay(g, null);
+          setDeck(newDeck);
+          setGameState('finished');
+          setGame(tempGame);
+        }
+      };
+
+      playDealer(currentGame, deck);
+    },
+    [deck]
+  );
+
   const handleHit = useCallback(() => {
     if (deck.length === 0) {
       setDeck(createDeck());
@@ -96,36 +118,7 @@ export function GameBoard() {
     setTimeout(() => {
       dealerPlayTurn(updatedGame);
     }, 500);
-  }, [game]);
-
-  const dealerPlayTurn = useCallback(
-    (currentGame: GameData) => {
-      let tempGame = currentGame;
-      let tempDeck = deck;
-
-      const playDealer = (g: GameData, d: typeof deck) => {
-        let newDeck = d.length === 0 ? createDeck() : d;
-        
-        if (tempGame.dealerHand.value < 17) {
-          const newCard = newDeck[0];
-          tempGame = dealerPlay(g, newCard);
-          newDeck = newDeck.slice(1);
-          
-          setTimeout(() => {
-            playDealer(tempGame, newDeck);
-          }, 800);
-        } else {
-          tempGame = dealerPlay(g, null);
-          setDeck(newDeck);
-          setGameState('finished');
-          setGame(tempGame);
-        }
-      };
-
-      playDealer(currentGame, tempDeck);
-    },
-    [deck]
-  );
+  }, [game, dealerPlayTurn]);
 
   const handleDoubleDown = useCallback(() => {
     if (deck.length === 0) {

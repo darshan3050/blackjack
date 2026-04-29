@@ -1,5 +1,5 @@
-import { Card, GameData, GameState } from './gameTypes';
-import { createHand, calculateHandValue, isBlackjack } from './cardUtils';
+import { Card, GameData } from './gameTypes';
+import { createHand } from './cardUtils';
 
 export function hitPlayer(game: GameData, newCard: Card): GameData {
   const playerHand = createHand([...game.playerHand.cards, newCard]);

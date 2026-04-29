@@ -10,9 +10,17 @@ import { HandDisplay } from './Hand';
 const STORAGE_KEY = 'blackjack-room';
 const NAME_KEY = 'blackjack-name';
 
+function getStoredValue(key: string, fallback: string) {
+  if (typeof window === 'undefined') {
+    return fallback;
+  }
+
+  return window.localStorage.getItem(key) || fallback;
+}
+
 export function MultiplayerRoom() {
-  const [roomId, setRoomId] = useState('table-1');
-  const [playerName, setPlayerName] = useState('');
+  const [roomId, setRoomId] = useState(() => getStoredValue(STORAGE_KEY, 'table-1'));
+  const [playerName, setPlayerName] = useState(() => getStoredValue(NAME_KEY, ''));
   const [playerId, setPlayerId] = useState<string | null>(null);
   const [connected, setConnected] = useState(false);
   const [roomState, setRoomState] = useState<MultiplayerRoomState | null>(null);
@@ -22,28 +30,17 @@ export function MultiplayerRoom() {
     if (typeof window === 'undefined') {
       return null;
     }
-    console.log("process.env.NEXT_PUBLIC_SOCKET_URL", process.env.NEXT_PUBLIC_SOCKET_URL);
+
     return io(process.env.NEXT_PUBLIC_SOCKET_URL, {
-      autoConnect: true,
+      autoConnect: false,
       path: '/socket.io',
       transports: ['websocket', 'polling'],
     });
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (!socket) {
-      console.log("socket not initialized");
       return;
-    }
-
-    const savedRoomId = window.localStorage.getItem(STORAGE_KEY);
-    const savedName = window.localStorage.getItem(NAME_KEY);
-
-    if (savedRoomId) {
-      setRoomId(savedRoomId);
-    }
-    if (savedName) {
-      setPlayerName(savedName);
     }
 
     const onConnect = () => setConnected(true);

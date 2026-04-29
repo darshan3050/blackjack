@@ -1,11 +1,11 @@
 import { createServer } from 'http';
-import { randomUUID } from 'crypto';
 import next from 'next';
 import { Server as SocketIOServer } from 'socket.io';
 import { createDeck, createHand } from './src/lib/cardUtils';
 import { Card, GameData, GameState } from './src/lib/gameTypes';
 
 const port = Number(process.env.PORT || 3000);
+const allowedOrigin = process.env.CORS_ORIGIN || '*';
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -70,53 +70,10 @@ function getRoom(roomId: string): RoomState {
   return freshRoom;
 }
 
-function cloneRoom(room: RoomState): RoomState {
-  return {
-    ...room,
-    deck: [...room.deck],
-    playerHand: {
-      ...room.playerHand,
-      cards: [...room.playerHand.cards],
-    },
-    dealerHand: {
-      ...room.dealerHand,
-      cards: [...room.dealerHand.cards],
-    },
-    dealerUpCard: room.dealerUpCard,
-    turnOrder: [...room.turnOrder],
-    players: Object.fromEntries(
-      Object.entries(room.players).map(([id, player]) => [id, { ...player }])
-    ),
-  };
-}
-
-function computeHandValue(cards: Card[]) {
-  const hand = createHand(cards);
-  return hand;
-}
-
 function ensureDeck(room: RoomState) {
   if (room.deck.length < 12) {
     room.deck = createDeck();
   }
-}
-
-function dealRound(room: RoomState) {
-  ensureDeck(room);
-
-  const playerCards = [room.deck[0], room.deck[1]];
-  const dealerCards = [room.deck[2], room.deck[3]];
-
-  room.playerHand = createHand(playerCards);
-  room.dealerHand = createHand(dealerCards);
-  room.dealerUpCard = dealerCards[0];
-  room.deck = room.deck.slice(4);
-  room.currentBet = 0;
-  room.playerWon = null;
-  room.isDraw = false;
-  room.finished = false;
-  room.gameState = 'betting';
-  room.message = 'Place your bet to begin';
 }
 
 function startMultiplayerRound(room: RoomState, playerId: string, betAmount: number) {
@@ -142,6 +99,7 @@ function startMultiplayerRound(room: RoomState, playerId: string, betAmount: num
   room.activePlayerId = playerId;
   room.message = `${player.name}'s turn`;
   player.balance -= betAmount;
+  room.roundNumber += 1;
   room.turnOrder = room.turnOrder.length > 0 ? room.turnOrder : [playerId];
 }
 
@@ -235,20 +193,35 @@ function emitRoom(io: SocketIOServer, roomId: string) {
 
 app.prepare().then(() => {
   const httpServer = createServer((req, res) => {
+    if (req.url === '/health') {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ ok: true }));
+      return;
+    }
+
     handle(req, res);
   });
 
   const io = new SocketIOServer(httpServer, {
     cors: {
-      origin: '*',
+      origin: allowedOrigin,
+      methods: ['GET', 'POST'],
     },
   });
 
   io.on('connection', (socket) => {
-    socket.on('room:join', ({ roomId, name }: { roomId: string; name?: string }) => {
+    socket.emit('server:ready', { socketId: socket.id });
+
+    socket.on('room:join', (payload: { roomId?: string; name?: string } = {}) => {
+      const roomId = payload.roomId?.trim();
+      if (!roomId) {
+        socket.emit('room:error', { message: 'Room code is required' });
+        return;
+      }
+
       const room = getRoom(roomId);
       const playerId = socket.id;
-      const playerName = name?.trim() || `Player ${room.turnOrder.length + 1}`;
+      const playerName = payload.name?.trim() || `Player ${room.turnOrder.length + 1}`;
 
       room.players[playerId] = {
         id: playerId,
@@ -270,14 +243,23 @@ app.prepare().then(() => {
       emitRoom(io, roomId);
     });
 
-    socket.on('room:startRound', ({ roomId, betAmount }: { roomId: string; betAmount: number }) => {
+    socket.on('room:startRound', (payload: { roomId?: string; betAmount?: number } = {}) => {
+      const roomId = payload.roomId?.trim();
+      const betAmount = Number(payload.betAmount);
+      if (!roomId || !Number.isFinite(betAmount) || betAmount <= 0) {
+        socket.emit('room:error', { message: 'A valid room and bet are required' });
+        return;
+      }
+
       const room = getRoom(roomId);
       const player = room.players[socket.id];
       if (!player) {
+        socket.emit('room:error', { message: 'Join the room before betting' });
         return;
       }
 
       if (room.gameState === 'playing') {
+        socket.emit('room:error', { message: 'A round is already in progress' });
         return;
       }
 
@@ -290,7 +272,13 @@ app.prepare().then(() => {
       emitRoom(io, roomId);
     });
 
-    socket.on('room:hit', ({ roomId }: { roomId: string }) => {
+    socket.on('room:hit', (payload: { roomId?: string } = {}) => {
+      const roomId = payload.roomId?.trim();
+      if (!roomId) {
+        socket.emit('room:error', { message: 'Room code is required' });
+        return;
+      }
+
       const room = getRoom(roomId);
       if (room.activePlayerId !== socket.id || room.gameState !== 'playing') {
         return;
@@ -312,7 +300,13 @@ app.prepare().then(() => {
       emitRoom(io, roomId);
     });
 
-    socket.on('room:stand', ({ roomId }: { roomId: string }) => {
+    socket.on('room:stand', (payload: { roomId?: string } = {}) => {
+      const roomId = payload.roomId?.trim();
+      if (!roomId) {
+        socket.emit('room:error', { message: 'Room code is required' });
+        return;
+      }
+
       const room = getRoom(roomId);
       if (room.activePlayerId !== socket.id || room.gameState !== 'playing') {
         return;
@@ -340,7 +334,13 @@ app.prepare().then(() => {
       }, 900);
     });
 
-    socket.on('room:double', ({ roomId }: { roomId: string }) => {
+    socket.on('room:double', (payload: { roomId?: string } = {}) => {
+      const roomId = payload.roomId?.trim();
+      if (!roomId) {
+        socket.emit('room:error', { message: 'Room code is required' });
+        return;
+      }
+
       const room = getRoom(roomId);
       if (room.activePlayerId !== socket.id || room.gameState !== 'playing') {
         return;
@@ -383,10 +383,17 @@ app.prepare().then(() => {
       }, 900);
     });
 
-    socket.on('room:playAgain', ({ roomId }: { roomId: string }) => {
+    socket.on('room:playAgain', (payload: { roomId?: string } = {}) => {
+      const roomId = payload.roomId?.trim();
+      if (!roomId) {
+        socket.emit('room:error', { message: 'Room code is required' });
+        return;
+      }
+
       const room = getRoom(roomId);
       const player = room.players[socket.id];
       if (!player) {
+        socket.emit('room:error', { message: 'Join the room before playing again' });
         return;
       }
 
@@ -398,11 +405,20 @@ app.prepare().then(() => {
       emitRoom(io, roomId);
     });
 
-    socket.on('disconnect', () => {
-      for (const room of rooms.values()) {
-        if (room.players[socket.id]) {
-          room.players[socket.id].connected = false;
+    socket.on('disconnecting', () => {
+      for (const roomId of socket.rooms) {
+        if (roomId === socket.id) {
+          continue;
         }
+
+        const room = rooms.get(roomId);
+        const player = room?.players[socket.id];
+        if (!room || !player) {
+          continue;
+        }
+
+        player.connected = false;
+        io.to(roomId).emit('room:update', serializeRoom(room));
       }
     });
   });
