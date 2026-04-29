@@ -2,13 +2,34 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
-import { MultiplayerRoomState } from '@/lib/multiplayer';
-import { BettingControls } from './BettingControls';
-import { GameControls } from './GameControls';
-import { HandDisplay } from './Hand';
 
 const STORAGE_KEY = 'blackjack-room';
 const NAME_KEY = 'blackjack-name';
+const DEFAULT_PLAYER_NAME = 'Player';
+
+type RoomPlayer = {
+  id?: string;
+  name?: string;
+  connected?: boolean;
+};
+
+type RemoteRoom = {
+  roomId: string;
+  players?: RoomPlayer[] | Record<string, RoomPlayer>;
+  [key: string]: unknown;
+};
+
+type RoomAck = {
+  ok: boolean;
+  error?: string;
+  room?: RemoteRoom;
+};
+
+type GameEventMessage = {
+  event: string;
+  payload?: unknown;
+  from?: string;
+};
 
 function getStoredValue(key: string, fallback: string) {
   if (typeof window === 'undefined') {
@@ -18,13 +39,42 @@ function getStoredValue(key: string, fallback: string) {
   return window.localStorage.getItem(key) || fallback;
 }
 
+function getPlayerCount(room: RemoteRoom | null) {
+  if (!room?.players) {
+    return 0;
+  }
+
+  return Array.isArray(room.players) ? room.players.length : Object.keys(room.players).length;
+}
+
+function formatPayload(payload: unknown) {
+  if (payload == null) {
+    return '';
+  }
+
+  if (typeof payload === 'string') {
+    return payload;
+  }
+
+  try {
+    return JSON.stringify(payload);
+  } catch {
+    return String(payload);
+  }
+}
+
 export function MultiplayerRoom() {
-  const [roomId, setRoomId] = useState(() => getStoredValue(STORAGE_KEY, 'table-1'));
+  const [roomId, setRoomId] = useState(() => getStoredValue(STORAGE_KEY, ''));
   const [playerName, setPlayerName] = useState(() => getStoredValue(NAME_KEY, ''));
-  const [playerId, setPlayerId] = useState<string | null>(null);
+  const [roomPassword, setRoomPassword] = useState('');
   const [connected, setConnected] = useState(false);
-  const [roomState, setRoomState] = useState<MultiplayerRoomState | null>(null);
-  const [manualBetMode, setManualBetMode] = useState(true);
+  const [activeRoom, setActiveRoom] = useState<RemoteRoom | null>(null);
+  const [statusMessage, setStatusMessage] = useState('Create or join a room to sync moves.');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [busyAction, setBusyAction] = useState<'create' | 'join' | null>(null);
+  const [events, setEvents] = useState<GameEventMessage[]>([]);
+  const [seat, setSeat] = useState(1);
+  const [betAmount, setBetAmount] = useState(10);
 
   const socket = useMemo<Socket | null>(() => {
     if (typeof window === 'undefined') {
@@ -33,7 +83,6 @@ export function MultiplayerRoom() {
 
     return io(process.env.NEXT_PUBLIC_SOCKET_URL, {
       autoConnect: false,
-      path: '/socket.io',
       transports: ['websocket', 'polling'],
     });
   }, []);
@@ -43,80 +92,149 @@ export function MultiplayerRoom() {
       return;
     }
 
-    const onConnect = () => setConnected(true);
+    const onConnect = () => {
+      setConnected(true);
+      setErrorMessage('');
+    };
     const onDisconnect = () => setConnected(false);
-    const onJoined = ({ playerId: joinedPlayerId, state }: { playerId: string; state: MultiplayerRoomState }) => {
-      setPlayerId(joinedPlayerId);
-      setRoomState(state);
-      setManualBetMode(state.gameState === 'betting');
+    const onConnectError = (error: Error) => {
+      setConnected(false);
+      setErrorMessage(error.message || 'Unable to connect to socket server');
     };
-    const onUpdate = (state: MultiplayerRoomState) => {
-      setRoomState(state);
-      setManualBetMode(state.gameState === 'betting' && state.currentBet === 0);
-    };
-    const onError = ({ message }: { message: string }) => {
-      console.error(message);
+    const onGameEvent = (message: GameEventMessage) => {
+      setEvents((currentEvents) => [message, ...currentEvents].slice(0, 12));
     };
 
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
-    socket.on('room:joined', onJoined);
-    socket.on('room:update', onUpdate);
-    socket.on('room:error', onError);
+    socket.on('connect_error', onConnectError);
+    socket.on('game:event', onGameEvent);
 
     socket.connect();
 
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
-      socket.off('room:joined', onJoined);
-      socket.off('room:update', onUpdate);
-      socket.off('room:error', onError);
+      socket.off('connect_error', onConnectError);
+      socket.off('game:event', onGameEvent);
       socket.disconnect();
     };
   }, [socket]);
 
-  const playerBalance = roomState && playerId ? roomState.players[playerId]?.balance ?? 0 : 0;
-  const canPlay = Boolean(socket && connected && playerId && roomState);
-  const currentHand = roomState?.playerHand;
-  const dealerHand = roomState?.dealerHand;
-  const isMyTurn = roomState?.activePlayerId === playerId;
+  const socketUrl = process.env.NEXT_PUBLIC_SOCKET_URL;
+  const currentRoomId = activeRoom?.roomId || roomId.trim();
+  const playerCount = getPlayerCount(activeRoom);
+  const canUseRoom = Boolean(socket && connected);
+  const canSendEvents = Boolean(canUseRoom && activeRoom?.roomId);
+
+  const rememberRoom = (room: RemoteRoom) => {
+    setActiveRoom(room);
+    setRoomId(room.roomId);
+    window.localStorage.setItem(STORAGE_KEY, room.roomId);
+    window.localStorage.setItem(NAME_KEY, playerName.trim() || DEFAULT_PLAYER_NAME);
+  };
+
+  const applyRoomAck = (res: RoomAck | undefined, successMessage: string) => {
+    if (!res?.ok || !res.room?.roomId) {
+      setErrorMessage(res?.error || 'Room request failed');
+      return;
+    }
+
+    rememberRoom(res.room);
+    setEvents([]);
+    setErrorMessage('');
+    setStatusMessage(successMessage);
+  };
+
+  const createRoom = () => {
+    if (!socket || !connected) {
+      setErrorMessage('Socket is not connected yet');
+      return;
+    }
+
+    setBusyAction('create');
+    socket.emit(
+      'room:create',
+      {
+        password: roomPassword,
+        playerName: playerName.trim() || DEFAULT_PLAYER_NAME,
+      },
+      (res: RoomAck) => {
+        setBusyAction(null);
+        applyRoomAck(res, 'Room created. Share the room ID with another player.');
+      }
+    );
+  };
 
   const joinRoom = () => {
-    if (!socket) {
+    if (!socket || !connected) {
+      setErrorMessage('Socket is not connected yet');
       return;
     }
 
-    window.localStorage.setItem(STORAGE_KEY, roomId);
-    window.localStorage.setItem(NAME_KEY, playerName);
-    socket.emit('room:join', { roomId, name: playerName });
-  };
-
-  const emitRoomAction = (eventName: string, payload: Record<string, unknown> = {}) => {
-    if (!socket || !roomState) {
+    const trimmedRoomId = roomId.trim();
+    if (!trimmedRoomId) {
+      setErrorMessage('Enter a room ID to join');
       return;
     }
 
-    socket.emit(eventName, { roomId: roomState.roomId, ...payload });
+    setBusyAction('join');
+    socket.emit(
+      'room:join',
+      {
+        roomId: trimmedRoomId,
+        password: roomPassword,
+        playerName: playerName.trim() || DEFAULT_PLAYER_NAME,
+      },
+      (res: RoomAck) => {
+        setBusyAction(null);
+        applyRoomAck(res, 'Joined room. Gameplay events are now synced.');
+      }
+    );
   };
 
-  const handleBet = (amount: number) => {
-    emitRoomAction('room:startRound', { betAmount: amount });
-    setManualBetMode(false);
+  const copyRoomId = async () => {
+    if (!activeRoom?.roomId) {
+      return;
+    }
+
+    await navigator.clipboard.writeText(activeRoom.roomId);
+    setStatusMessage('Room ID copied.');
   };
 
-  const handleHit = () => emitRoomAction('room:hit');
-  const handleStand = () => emitRoomAction('room:stand');
-  const handleDouble = () => emitRoomAction('room:double');
-  const handlePlayAgain = () => emitRoomAction('room:playAgain');
-  const handleChangeBet = () => setManualBetMode(true);
+  const sendGameEvent = (event: string, payload: Record<string, unknown> = {}) => {
+    if (!socket || !activeRoom?.roomId) {
+      setErrorMessage('Create or join a room before sending gameplay events');
+      return;
+    }
+
+    const message = {
+      roomId: activeRoom.roomId,
+      event,
+      payload: {
+        seat,
+        playerName: playerName.trim() || DEFAULT_PLAYER_NAME,
+        ...payload,
+      },
+    };
+
+    socket.emit('game:event', message);
+    setEvents((currentEvents) => [
+      {
+        event,
+        payload: message.payload,
+        from: 'you',
+      },
+      ...currentEvents,
+    ].slice(0, 12));
+  };
 
   return (
     <div className="glass-alt rounded-3xl p-6 mb-8 border border-amber-500/20 shadow-2xl relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,191,36,0.12)_0%,transparent_40%),radial-gradient(circle_at_bottom_right,rgba(96,165,250,0.1)_0%,transparent_45%)] pointer-events-none"></div>
 
-      <div className="relative z-10">
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <div className="relative z-10 grid gap-5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-amber-400/90 font-semibold">Online Table</p>
             <h2 className="text-3xl font-black text-gradient">Real-time multiplayer</h2>
@@ -127,138 +245,167 @@ export function MultiplayerRoom() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 mb-5">
-          <input
-            value={roomId}
-            onChange={(event) => setRoomId(event.target.value)}
-            placeholder="Room code"
-            className="px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white"
-          />
-          <input
-            value={playerName}
-            onChange={(event) => setPlayerName(event.target.value)}
-            placeholder="Your name"
-            className="px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white"
-          />
+        <div className="grid gap-3 md:grid-cols-3">
+          <label className="grid gap-2 text-sm text-slate-300">
+            Player name
+            <input
+              value={playerName}
+              onChange={(event) => setPlayerName(event.target.value)}
+              placeholder="Your name"
+              className="px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white"
+            />
+          </label>
+          <label className="grid gap-2 text-sm text-slate-300">
+            Room password
+            <input
+              value={roomPassword}
+              onChange={(event) => setRoomPassword(event.target.value)}
+              placeholder="Password"
+              type="password"
+              className="px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white"
+            />
+          </label>
+          <label className="grid gap-2 text-sm text-slate-300">
+            Room ID
+            <input
+              value={roomId}
+              onChange={(event) => setRoomId(event.target.value)}
+              placeholder="Paste room ID"
+              className="px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white"
+            />
+          </label>
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          <button
+            onClick={createRoom}
+            disabled={!canUseRoom || busyAction !== null}
+            className="px-5 py-3 rounded-xl bg-linear-to-r from-amber-500 to-orange-500 disabled:from-gray-600 disabled:to-gray-700 disabled:text-gray-400 text-white font-semibold btn-glow"
+          >
+            {busyAction === 'create' ? 'Creating...' : 'Create Room'}
+          </button>
           <button
             onClick={joinRoom}
-            className="px-5 py-3 rounded-xl bg-linear-to-r from-amber-500 to-orange-500 text-white font-semibold btn-glow"
+            disabled={!canUseRoom || busyAction !== null}
+            className="px-5 py-3 rounded-xl bg-linear-to-r from-blue-500 to-indigo-600 disabled:from-gray-600 disabled:to-gray-700 disabled:text-gray-400 text-white font-semibold btn-glow"
           >
-            Join room
+            {busyAction === 'join' ? 'Joining...' : 'Join Room'}
           </button>
         </div>
 
-        {roomState && (
-          <div className="grid gap-4">
-            <div className="grid gap-2 rounded-2xl border border-white/10 bg-slate-950/40 p-4 md:grid-cols-3">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Room</p>
-                <p className="text-lg font-bold text-white">{roomState.roomId}</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Round</p>
-                <p className="text-lg font-bold text-white">{roomState.roundNumber}</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Your balance</p>
-                <p className="text-lg font-bold text-amber-300">${playerBalance}</p>
-              </div>
+        <div className="grid gap-3 rounded-2xl border border-white/10 bg-slate-950/40 p-4 md:grid-cols-3">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Socket URL</p>
+            <p className="break-all text-sm font-semibold text-slate-200">{socketUrl || 'Not configured'}</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Room</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="text-lg font-bold text-white">{currentRoomId || 'None'}</p>
+              {activeRoom?.roomId && (
+                <button
+                  onClick={copyRoomId}
+                  className="rounded-lg border border-amber-400/40 px-2 py-1 text-xs font-semibold text-amber-200"
+                >
+                  Copy
+                </button>
+              )}
             </div>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Players</p>
+            <p className="text-lg font-bold text-white">{playerCount}</p>
+          </div>
+        </div>
 
-            <div className={`rounded-2xl p-5 text-center font-bold text-lg ${
-              roomState.playerWon === true
-                ? 'bg-linear-to-r from-green-900/50 to-emerald-900/50 border border-green-500/60 text-green-300'
-                : roomState.playerWon === false && !roomState.isDraw
-                ? 'bg-linear-to-r from-red-900/50 to-rose-900/50 border border-red-500/60 text-red-300'
-                : roomState.isDraw
-                ? 'bg-linear-to-r from-yellow-900/50 to-amber-900/50 border border-yellow-500/60 text-yellow-300'
-                : 'bg-linear-to-r from-slate-800/60 to-slate-700/60 border border-slate-600/60 text-slate-300'
-            }`}>
-              {roomState.message}
-            </div>
+        {(statusMessage || errorMessage) && (
+          <div className={`rounded-2xl p-4 text-sm font-semibold ${
+            errorMessage
+              ? 'border border-red-500/60 bg-red-950/40 text-red-200'
+              : 'border border-emerald-500/40 bg-emerald-950/30 text-emerald-200'
+          }`}>
+            {errorMessage || statusMessage}
+          </div>
+        )}
 
-            <div className="grid gap-4 rounded-3xl border border-white/10 bg-slate-950/35 p-5">
-              <div className="flex items-center justify-between gap-3 flex-wrap">
-                <div>
-                  <p className="text-sm text-slate-400">Players in room</p>
-                  <p className="text-white font-semibold">{Object.values(roomState.players).length}</p>
-                </div>
-                <div className="text-sm text-slate-300">
-                  Turn: <span className="text-amber-300 font-semibold">{isMyTurn ? 'You' : 'Waiting'}</span>
-                </div>
+        <div className="grid gap-4 rounded-3xl border border-white/10 bg-slate-950/35 p-5">
+          <div className="flex flex-wrap items-end gap-3">
+            <label className="grid gap-2 text-sm text-slate-300">
+              Seat
+              <input
+                type="number"
+                min="1"
+                value={seat}
+                onChange={(event) => setSeat(Math.max(1, Number(event.target.value) || 1))}
+                className="w-24 px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white"
+              />
+            </label>
+            <label className="grid gap-2 text-sm text-slate-300">
+              Bet
+              <input
+                type="number"
+                min="1"
+                value={betAmount}
+                onChange={(event) => setBetAmount(Math.max(1, Number(event.target.value) || 1))}
+                className="w-32 px-4 py-3 rounded-xl bg-slate-900/70 border border-slate-600 text-white"
+              />
+            </label>
+            <button
+              onClick={() => sendGameEvent('player:bet', { amount: betAmount })}
+              disabled={!canSendEvents}
+              className="px-5 py-3 rounded-xl bg-linear-to-r from-green-500 to-emerald-600 disabled:from-gray-600 disabled:to-gray-700 disabled:text-gray-400 text-white font-semibold btn-glow"
+            >
+              Send Bet
+            </button>
+            <button
+              onClick={() => sendGameEvent('player:hit')}
+              disabled={!canSendEvents}
+              className="px-5 py-3 rounded-xl bg-linear-to-r from-blue-500 to-blue-700 disabled:from-gray-600 disabled:to-gray-700 disabled:text-gray-400 text-white font-semibold btn-glow"
+            >
+              Hit
+            </button>
+            <button
+              onClick={() => sendGameEvent('player:stand')}
+              disabled={!canSendEvents}
+              className="px-5 py-3 rounded-xl bg-linear-to-r from-orange-500 to-orange-700 disabled:from-gray-600 disabled:to-gray-700 disabled:text-gray-400 text-white font-semibold btn-glow"
+            >
+              Stand
+            </button>
+            <button
+              onClick={() => sendGameEvent('player:double', { amount: betAmount * 2 })}
+              disabled={!canSendEvents}
+              className="px-5 py-3 rounded-xl bg-linear-to-r from-purple-500 to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:text-gray-400 text-white font-semibold btn-glow"
+            >
+              Double
+            </button>
+          </div>
+
+          <div className="grid gap-2">
+            <p className="text-sm font-semibold text-slate-300">Latest room events</p>
+            {events.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-slate-600/60 bg-slate-950/25 p-4 text-slate-400">
+                No gameplay events yet.
               </div>
-
-              <div className="flex flex-wrap gap-2">
-                {Object.values(roomState.players).map((player) => (
-                  <span
-                    key={player.id}
-                    className={`rounded-full px-3 py-1 text-sm border ${
-                      player.id === playerId
-                        ? 'border-amber-400/60 bg-amber-500/10 text-amber-200'
-                        : 'border-slate-600 bg-slate-800/50 text-slate-300'
-                    }`}
+            ) : (
+              <div className="grid gap-2">
+                {events.map((message, index) => (
+                  <div
+                    key={`${message.event}-${index}`}
+                    className="rounded-xl border border-slate-700/70 bg-slate-900/60 p-3 text-sm text-slate-300"
                   >
-                    {player.name} {player.connected ? '' : '(off)'}
-                  </span>
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="font-bold text-amber-200">{message.event}</span>
+                      <span className="text-xs text-slate-500">{message.from ? `from ${message.from}` : 'from room'}</span>
+                    </div>
+                    {message.payload != null && (
+                      <p className="mt-1 break-all text-slate-400">{formatPayload(message.payload)}</p>
+                    )}
+                  </div>
                 ))}
               </div>
-            </div>
-
-            {roomState.gameState === 'betting' && (manualBetMode || roomState.currentBet === 0) && (
-              <BettingControls balance={playerBalance} onBet={handleBet} disabled={!canPlay} />
-            )}
-
-            {roomState.gameState !== 'betting' && currentHand && dealerHand && (
-              <div className="bg-linear-to-b from-slate-900/80 via-slate-800/80 to-slate-900/80 rounded-3xl p-6 border border-amber-500/20 shadow-xl">
-                <div className="mb-10 pb-8 border-b border-slate-700/50">
-                  <HandDisplay
-                    hand={dealerHand}
-                    title="🎰 Dealer"
-                    hideFirstCard={roomState.gameState === 'playing' && dealerHand.cards.length > 0}
-                    isDealer={true}
-                  />
-                </div>
-
-                <div className="mb-10 p-6 bg-slate-800/50 rounded-xl border border-amber-500/20">
-                  <HandDisplay hand={currentHand} title={`👤 ${playerName || 'Your'} Hand`} />
-                </div>
-
-                <div className="mb-8 text-center p-4 bg-linear-to-r from-amber-900/30 to-orange-900/30 rounded-xl border border-amber-500/30">
-                  <p className="text-amber-300 text-lg font-semibold mb-1">Current Bet</p>
-                  <p className="text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-amber-300 to-amber-500">
-                    ${roomState.currentBet}
-                  </p>
-                </div>
-
-                <GameControls
-                  onHit={handleHit}
-                  onStand={handleStand}
-                  onDoubleDown={handleDouble}
-                  onNewGame={handleChangeBet}
-                  onPlayAgain={handlePlayAgain}
-                  canHit={roomState.gameState === 'playing' && isMyTurn}
-                  canStand={roomState.gameState === 'playing' && isMyTurn}
-                  canDoubleDown={roomState.gameState === 'playing' && isMyTurn && currentHand.cards.length === 2}
-                  gameFinished={roomState.gameState === 'finished'}
-                  lastBet={roomState.currentBet}
-                />
-              </div>
-            )}
-
-            {roomState.gameState === 'finished' && roomState.finished && (
-              <div className="text-center mt-8 p-5 rounded-2xl border border-slate-600/40 bg-linear-to-r from-slate-800/60 to-slate-700/60">
-                <p className="text-slate-300 mb-2">Finish strong or change the wager.</p>
-                <p className="text-sm text-slate-500">Play Again repeats the same bet. Change Bet returns you to betting mode.</p>
-              </div>
             )}
           </div>
-        )}
-
-        {!roomState && (
-          <div className="rounded-2xl border border-dashed border-slate-600/60 bg-slate-950/25 p-6 text-slate-300">
-            Join a room to sync the table in real time.
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
