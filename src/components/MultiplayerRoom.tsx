@@ -22,9 +22,9 @@ export function MultiplayerRoom() {
     if (typeof window === 'undefined') {
       return null;
     }
-
+    console.log("process.env.NEXT_PUBLIC_SOCKET_URL", process.env.NEXT_PUBLIC_SOCKET_URL);
     return io(process.env.NEXT_PUBLIC_SOCKET_URL, {
-      autoConnect: false,
+      autoConnect: true,
       path: '/socket.io',
       transports: ['websocket', 'polling'],
     });
@@ -32,6 +32,7 @@ export function MultiplayerRoom() {
 
   useEffect(() => {
     if (!socket) {
+      console.log("socket not initialized");
       return;
     }
 
