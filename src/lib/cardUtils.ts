@@ -1,17 +1,19 @@
-import { Card, Suit, Rank, Hand } from './gameTypes';
+import { Card, Hand, Rank, Suit } from './gameTypes';
 
-const SUITS: Suit[] = ['♠', '♥', '♦', '♣'];
+const SUITS: Suit[] = ['S', 'H', 'D', 'C'];
 const RANKS: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
 export function createDeck(): Card[] {
   const deck: Card[] = [];
   let id = 0;
+
   for (const suit of SUITS) {
     for (const rank of RANKS) {
       deck.push({ suit, rank, id: `${rank}${suit}-${id}` });
       id++;
     }
   }
+
   return deck.sort(() => Math.random() - 0.5);
 }
 

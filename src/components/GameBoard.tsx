@@ -174,11 +174,7 @@ export function GameBoard() {
           : 'bg-linear-to-r from-slate-800/60 to-slate-700/60 border-2 border-slate-600/60 text-slate-300'
       }`}>
         <div className="inline-block">
-          {game.playerWon === true && <span className="mr-2">🎉</span>}
-          {game.playerWon === false && <span className="mr-2">💔</span>}
-          {game.isDraw && <span className="mr-2">🤝</span>}
           {game.message}
-          {game.playerWon === true && <span className="ml-2">🎉</span>}
         </div>
       </div>
 
@@ -193,7 +189,7 @@ export function GameBoard() {
             <div className="mb-12 pb-8 border-b border-slate-700/50">
               <HandDisplay
                 hand={game.dealerHand}
-                title="🎰 Dealer"
+                title="Dealer"
                 hideFirstCard={gameState === 'playing' && game.dealerHand.cards.length > 0}
                 isDealer={true}
               />
@@ -201,7 +197,7 @@ export function GameBoard() {
 
             {/* Player Hand - Enhanced */}
             <div className="mb-12 p-6 bg-slate-800/50 rounded-xl border border-amber-500/20">
-              <HandDisplay hand={game.playerHand} title="👤 Your Hand" />
+              <HandDisplay hand={game.playerHand} title="Your Hand" />
             </div>
 
             {/* Current Bet - Enhanced */}
@@ -242,7 +238,7 @@ export function GameBoard() {
 
       {/* Balance Display - Enhanced */}
       <div className="text-center mt-12 p-6 bg-linear-to-r from-slate-800/60 to-slate-700/60 rounded-2xl border border-slate-600/40 glass">
-        <p className="text-slate-400 text-sm font-medium mb-2">💰 Total Balance</p>
+        <p className="text-slate-400 text-sm font-medium mb-2">Total Balance</p>
         <p className="text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-amber-300 to-amber-500">
           ${game.balance}
         </p>

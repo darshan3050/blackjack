@@ -27,7 +27,7 @@ export function BettingControls({ balance, onBet, disabled }: BettingControlsPro
       
       <div className="relative z-10">
         <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500 mb-6">
-          💰 Place Your Bet
+          Place Your Bet
         </h3>
 
         <div className="flex gap-3 mb-6 flex-wrap">
@@ -73,7 +73,7 @@ export function BettingControls({ balance, onBet, disabled }: BettingControlsPro
               }
             `}
           >
-            🎰 Deal
+            Deal
           </button>
         </div>
 

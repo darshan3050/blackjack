@@ -6,7 +6,7 @@ interface GameControlsProps {
   onDoubleDown: () => void;
   onNewGame: () => void;
   onPlayAgain: () => void;
-  canHit: boolean; 
+  canHit: boolean;
   canStand: boolean;
   canDoubleDown: boolean;
   gameFinished: boolean;
@@ -41,7 +41,7 @@ export function GameControls({
               }
             `}
           >
-            🃏 Hit
+            Hit
           </button>
 
           <button
@@ -56,7 +56,7 @@ export function GameControls({
               }
             `}
           >
-            ✋ Stand
+            Stand
           </button>
 
           <button
@@ -71,7 +71,7 @@ export function GameControls({
               }
             `}
           >
-            🎲 Double
+            Double
           </button>
         </>
       )}
@@ -82,14 +82,14 @@ export function GameControls({
             onClick={onPlayAgain}
             className="px-8 py-4 font-bold rounded-xl bg-gradient-to-br from-green-500 to-emerald-700 hover:from-green-400 hover:to-emerald-600 text-white transition-all duration-300 btn-glow shadow-lg hover:shadow-green-500/50 active:scale-95 text-lg bounce-animation"
           >
-            🎉 Play Again (${lastBet})
+            Play Again (${lastBet})
           </button>
 
           <button
             onClick={onNewGame}
             className="px-8 py-4 font-bold rounded-xl bg-gradient-to-br from-slate-600 to-slate-800 hover:from-slate-500 hover:to-slate-700 text-white transition-all duration-300 btn-glow shadow-lg hover:shadow-slate-500/50 active:scale-95 text-lg"
           >
-            🎰 Change Bet
+            Change Bet
           </button>
         </>
       )}
