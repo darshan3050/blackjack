@@ -1,0 +1,4 @@
+D:\go\blackjack\.claude\skills\ui-ux-pro-max\scripts\core.py
+D:\go\blackjack\.claude\skills\ui-ux-pro-max\scripts\design_system.py
+D:\go\blackjack\.claude\skills\ui-ux-pro-max\scripts\search.py
+D:\go\blackjack\.claude\skills\ui-ux-pro-max\SKILL.md

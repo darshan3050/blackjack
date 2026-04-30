@@ -1,0 +1,692 @@
+{
+  "nodes": [
+    {
+      "id": "skill_md_uiuxpromax",
+      "label": "UI/UX Pro Max Skill",
+      "file_type": "document",
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "skill_md_designintelligence",
+      "label": "Design Intelligence Database",
+      "file_type": "document",
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "skill_md_workflowsteps",
+      "label": "UI/UX Skill Workflow",
+      "file_type": "document",
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 122",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "skill_md_masteroverridespattern",
+      "label": "Master + Overrides Pattern",
+      "file_type": "document",
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 155",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "skill_md_predeliverchecklist",
+      "label": "Pre-Delivery UI Checklist",
+      "file_type": "document",
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 344",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "skill_md_accessibilityrules",
+      "label": "Accessibility Rules",
+      "file_type": "document",
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 33",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "core_py_bm25",
+      "label": "BM25 Search Engine",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 96",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "core_py_csvconfigmap",
+      "label": "CSV Domain Configuration Map",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 16",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "core_py_stackconfig",
+      "label": "Stack Configuration Map",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 70",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "core_py_searchfn",
+      "label": "search Main Search Function",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 212",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "core_py_searchstackfn",
+      "label": "search_stack Stack Search Function",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 234",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "core_py_detectdomain",
+      "label": "detect_domain Auto Domain Detector",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 190",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "core_py_searchcsv",
+      "label": "_search_csv BM25 CSV Search",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 165",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "core_py_loadcsv",
+      "label": "_load_csv CSV Loader",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 159",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_designsystemgenerator",
+      "label": "DesignSystemGenerator Class",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 37",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_generatefn",
+      "label": "generate_design_system Entry Point",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 462",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_persistfn",
+      "label": "persist_design_system File Persistence",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 491",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_formatasciibox",
+      "label": "format_ascii_box ASCII Formatter",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 242",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_formatmarkdown",
+      "label": "format_markdown Markdown Formatter",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 367",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_formatmastermd",
+      "label": "format_master_md MASTER.md Formatter",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 542",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_formatpageoverride",
+      "label": "format_page_override_md Page Override Formatter",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 805",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_generateintelligentoverrides",
+      "label": "_generate_intelligent_overrides Override Generator",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 914",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_detectpagetype",
+      "label": "_detect_page_type Page Type Detector",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 1020",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_applyreasoningfn",
+      "label": "_apply_reasoning Reasoning Rule Applier",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 88",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system_py_uireasoningcsv",
+      "label": "ui-reasoning.csv Reasoning Rules Data",
+      "file_type": "document",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 25",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "search_py_clientry",
+      "label": "search.py CLI Entry Point",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/search.py",
+      "source_location": "line 56",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "search_py_formatoutput",
+      "label": "format_output Result Formatter",
+      "file_type": "code",
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/search.py",
+      "source_location": "line 30",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "core_py_searchfn",
+      "target": "core_py_detectdomain",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 214",
+      "weight": 1.0
+    },
+    {
+      "source": "core_py_searchfn",
+      "target": "core_py_searchcsv",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 222",
+      "weight": 1.0
+    },
+    {
+      "source": "core_py_searchstackfn",
+      "target": "core_py_searchcsv",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 244",
+      "weight": 1.0
+    },
+    {
+      "source": "core_py_searchcsv",
+      "target": "core_py_loadcsv",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 170",
+      "weight": 1.0
+    },
+    {
+      "source": "core_py_searchcsv",
+      "target": "core_py_bm25",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 176",
+      "weight": 1.0
+    },
+    {
+      "source": "core_py_searchfn",
+      "target": "core_py_csvconfigmap",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 217",
+      "weight": 1.0
+    },
+    {
+      "source": "core_py_searchstackfn",
+      "target": "core_py_stackconfig",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 238",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_generatefn",
+      "target": "design_system_py_designsystemgenerator",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 479",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_generatefn",
+      "target": "design_system_py_persistfn",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 483",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_generatefn",
+      "target": "design_system_py_formatasciibox",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 487",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_generatefn",
+      "target": "design_system_py_formatmarkdown",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 486",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_persistfn",
+      "target": "design_system_py_formatmastermd",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 523",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_persistfn",
+      "target": "design_system_py_formatpageoverride",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 530",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_formatpageoverride",
+      "target": "design_system_py_generateintelligentoverrides",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 812",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_generateintelligentoverrides",
+      "target": "core_py_searchfn",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 928",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_generateintelligentoverrides",
+      "target": "design_system_py_detectpagetype",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 938",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_designsystemgenerator",
+      "target": "core_py_searchfn",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 167",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_designsystemgenerator",
+      "target": "design_system_py_applyreasoningfn",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 173",
+      "weight": 1.0
+    },
+    {
+      "source": "design_system_py_designsystemgenerator",
+      "target": "design_system_py_uireasoningcsv",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "line 43",
+      "weight": 1.0
+    },
+    {
+      "source": "search_py_clientry",
+      "target": "core_py_searchfn",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/search.py",
+      "source_location": "line 109",
+      "weight": 1.0
+    },
+    {
+      "source": "search_py_clientry",
+      "target": "core_py_searchstackfn",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/search.py",
+      "source_location": "line 101",
+      "weight": 1.0
+    },
+    {
+      "source": "search_py_clientry",
+      "target": "design_system_py_generatefn",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/search.py",
+      "source_location": "line 76",
+      "weight": 1.0
+    },
+    {
+      "source": "search_py_clientry",
+      "target": "search_py_formatoutput",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/search.py",
+      "source_location": "line 106",
+      "weight": 1.0
+    },
+    {
+      "source": "skill_md_uiuxpromax",
+      "target": "search_py_clientry",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 138",
+      "weight": 1.0
+    },
+    {
+      "source": "skill_md_workflowsteps",
+      "target": "design_system_py_generatefn",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 135",
+      "weight": 1.0
+    },
+    {
+      "source": "skill_md_masteroverridespattern",
+      "target": "design_system_py_persistfn",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 155",
+      "weight": 1.0
+    },
+    {
+      "source": "skill_md_uiuxpromax",
+      "target": "skill_md_designintelligence",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 7",
+      "weight": 1.0
+    },
+    {
+      "source": "skill_md_designintelligence",
+      "target": "core_py_csvconfigmap",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "design_system_py_formatasciibox",
+      "target": "design_system_py_formatmarkdown",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "design_system_py_formatmastermd",
+      "target": "design_system_py_formatmarkdown",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "skill_md_predeliverchecklist",
+      "target": "design_system_py_formatasciibox",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "skill_md_accessibilityrules",
+      "target": "design_system_py_uireasoningcsv",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.72,
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": null,
+      "weight": 0.72
+    },
+    {
+      "source": "core_py_bm25",
+      "target": "core_py_searchcsv",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py",
+      "source_location": "line 176",
+      "weight": 1.0
+    },
+    {
+      "source": "skill_md_masteroverridespattern",
+      "target": "design_system_py_formatpageoverride",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.88,
+      "source_file": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "source_location": "line 168",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "design_system_generation_pipeline",
+      "label": "Design System Generation Pipeline",
+      "nodes": [
+        "search_py_clientry",
+        "design_system_py_generatefn",
+        "design_system_py_designsystemgenerator",
+        "core_py_searchfn",
+        "design_system_py_applyreasoningfn"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py"
+    },
+    {
+      "id": "master_overrides_persistence_pattern",
+      "label": "Master + Overrides Persistence Pattern",
+      "nodes": [
+        "design_system_py_persistfn",
+        "design_system_py_formatmastermd",
+        "design_system_py_formatpageoverride",
+        "design_system_py_generateintelligentoverrides",
+        "design_system_py_detectpagetype"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.92,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/design_system.py"
+    },
+    {
+      "id": "bm25_search_infrastructure",
+      "label": "BM25 Search Infrastructure",
+      "nodes": [
+        "core_py_bm25",
+        "core_py_searchcsv",
+        "core_py_loadcsv",
+        "core_py_detectdomain",
+        "core_py_csvconfigmap"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/skills/ui-ux-pro-max/scripts/core.py"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
